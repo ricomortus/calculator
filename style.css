@@ -1,0 +1,67 @@
+.calculator-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    border: 1px solid black;
+    height: 500px;
+    width: 350px;
+}
+
+.display {
+    grid-column: span 4;
+    grid-row: span 1;
+    border: 1px solid red;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.display-text {
+    font-size: 60px;
+    margin: 0;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+}
+
+.all-clear-button {
+    grid-column: auto / span 2;
+    grid-row-start: 2;
+}
+
+.clear-button, .divide-button {
+    grid-column: span 1;
+    grid-row-start: 2;
+}
+
+.one-button, .two-button, .three-button, .multiply-button {
+    grid-column: span 1;
+    grid-row-start: 3;
+}
+
+.four-button, .five-button, .six-button, .add-button {
+    grid-column: span 1;
+    grid-row-start: 4;
+}
+
+.seven-button, .eight-button, .nine-button, .subtract-button {
+    grid-column: span 1;
+    grid-row-start: 5;
+}
+
+.decimal-button, .zero-button {
+    grid-column: span 1;
+    grid-row-start: 6;
+}
+
+.equal-button {
+    grid-column: auto / span 2;
+    grid-column-start: 3;
+    grid-row-start: 6;
+}
