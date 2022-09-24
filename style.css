@@ -12,6 +12,7 @@
     grid-row: span 1;
     border: 1px solid red;
     height: 100px;
+    max-width: 350px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -20,8 +21,8 @@
 .display-text {
     font-size: 60px;
     margin: 0;
+    display: flex;
 }
-
 
 .buttons {
     display: flex;
