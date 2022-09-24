@@ -3,8 +3,8 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     border: 1px solid black;
-    height: 500px;
-    width: 350px;
+    height: 480px;
+    width: 320px;
 }
 
 .display {
@@ -12,16 +12,17 @@
     grid-row: span 1;
     border: 1px solid red;
     height: 100px;
-    max-width: 350px;
+    width: 320px;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-end;  
 }
 
 .display-text {
-    font-size: 60px;
+    font-size: 45px;
     margin: 0;
-    display: flex;
+
+    
 }
 
 .buttons {

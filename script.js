@@ -8,19 +8,27 @@ let num2 = 0;
 const displayText = document.querySelector('.display-text');
 displayText.innerText = '0';
 
+//displayText Function
+function displayResult () {
+    displayText.style.cssText = 'font-size: 45px';
+    displayText.innerText = displayValue;
+};
+function displayResultSmall () {
+    displayText.style.cssText = 'font-size: 25px';
+    displayText.innerText = displayValue;
+};
 //operate function
 function operate(operator, num1, num2) {
     //store previous number in operator functions below
     if (operator == 'add'){
-        add(num1, num2);
+        return add(num1, num2);
     } else if (operator == 'subtract') {
-        subtract(num1, num2);
+        return subtract(num1, num2);
     } else if (operator == 'multiply') {
-        multiply(num1, num2);
+        return multiply(num1, num2);
     } else if (operator == 'divide') {
-        divide(num1, num2);
+        return divide(num1, num2);
     }
-    displayText.innerText = displayValue;
 };
 //add
 function add (num1, num2) {
@@ -28,10 +36,10 @@ function add (num1, num2) {
     let intResult = num1 + num2;
     let strResult = String(intResult);
     if (strResult.includes('.') && strResult.split('.')[1].length > 5) {
-        displayValue = intResult.toFixed(5);
+        return displayValue = intResult.toFixed(5);
     } else {
-        displayValue = num1 + num2;
-    };
+        return displayValue = num1 + num2;
+    }
 };
 //subtract
 function subtract (num1, num2) {
@@ -39,10 +47,10 @@ function subtract (num1, num2) {
     let intResult = num1 - num2;
     let strResult = String(intResult);
     if (strResult.includes('.') && strResult.split('.')[1].length > 5) {
-        displayValue = intResult.toFixed(5);
+        return displayValue = intResult.toFixed(5);
     } else {
-        displayValue = num1 - num2;
-    };
+        return displayValue = num1 - num2;
+    }
 };
 
 //multiply
@@ -51,10 +59,10 @@ function multiply (num1, num2) {
     let intResult = num1 * num2;
     let strResult = String(intResult);
     if (strResult.includes('.') && strResult.split('.')[1].length > 5) {
-        displayValue = intResult.toFixed(5);
+        return displayValue = intResult.toFixed(5);
     } else {
-        displayValue = num1 * num2;
-    };
+        return displayValue = num1 * num2;
+    }
 };
 
 //divide
@@ -63,26 +71,28 @@ function divide (num1, num2) {
     let intResult = num1 / num2;
     let strResult = String(intResult);
     if (strResult.includes('.') && strResult.split('.')[1].length > 5) {
-        displayValue = intResult.toFixed(5);
+        return displayValue = intResult.toFixed(5);
     } else {
-        displayValue = num1 / num2;
-    };
+        return displayValue = num1 / num2;
+    }
 };
-
-
 //FUNCTION BUTTONS
 //Equal button
 equalButton = document.querySelector('.equal-button');
 equalButton.addEventListener('click', () => {
-    if (displayValue.length > 0) {
-        operate(operator, num1, num2);
+    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
+        displayResultSmall();
+    } else {
+        displayResult();
     }
 });
 //Add Button
 addButton = document.querySelector('.add-button');
 addButton.addEventListener('click', () => {
-    if (displayValue.length > 0) {
-        operate(operator, num1, num2);
+    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
+        displayResultSmall();
+    } else {
+        displayResult();
     }
     num1 = Number(displayValue);
     operator = 'add';
@@ -91,8 +101,10 @@ addButton.addEventListener('click', () => {
 //Subtract Button
 subtractButton = document.querySelector('.subtract-button');
 subtractButton.addEventListener('click', () => {
-    if (displayValue.length > 0) {
-        operate(operator, num1, num2);
+    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
+        displayResultSmall();
+    } else {
+        displayResult();
     }
     num1 = Number(displayValue);
     operator = 'subtract';
@@ -101,8 +113,10 @@ subtractButton.addEventListener('click', () => {
 //Multiply Button
 multiplyButton = document.querySelector('.multiply-button');
 multiplyButton.addEventListener('click', () => {
-    if (displayValue.length > 0) {
-        operate(operator, num1, num2);
+    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
+        displayResultSmall();
+    } else {
+        displayResult();
     }
     num1 = Number(displayValue);
     operator = 'multiply';
@@ -111,8 +125,10 @@ multiplyButton.addEventListener('click', () => {
 //Divide Button
 divideButton = document.querySelector('.divide-button');
 divideButton.addEventListener('click', () => {
-    if (displayValue.length > 0) {
-        operate(operator, num1, num2);
+    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
+        displayResultSmall();
+    } else {
+        displayResult();
     }
     num1 = Number(displayValue);
     operator = 'divide';
@@ -125,12 +141,14 @@ allClearButton.addEventListener('click', () => {
     num1 = 0;
     num2 = 0;
     operator = '';
+    displayText.style.cssText = 'font-size: 45px';
     return displayText.innerText = '0';
 });
 //Clear button
 clearButton = document.querySelector('.clear-button');
 clearButton.addEventListener('click', () => {
     displayValue = ''
+    displayText.style.cssText = 'font-size: 45px';
     return displayText.innerText = '0';
 });
 
@@ -153,10 +171,10 @@ decimalButton.addEventListener('click', () => {
 //0 
 zeroButton = document.querySelector('.zero-button');
 zeroButton.addEventListener('click', () => {
-    if (displayValue.length < 11 && displayValue[0] !== '0') {
+    if (displayValue.length < 13 && displayValue[0] !== '0') {
         displayValue += '0';
         return displayText.innerText = displayValue;
-    } else if (displayValue.length < 11 && displayValue.includes('.')){
+    } else if (displayValue.length < 13 && displayValue.includes('.')){
         displayValue += '0';
         return displayText.innerText = displayValue;
     }
@@ -164,7 +182,7 @@ zeroButton.addEventListener('click', () => {
 
 //Number Button Function
 function numberButton (num) {
-    if (displayValue.length < 11 && operator.length == 0) {
+    if (displayValue.length < 13 && operator.length == 0) {
         if (displayValue[0] == '0' && !displayValue.includes('.')) {
             displayValue = num;
             return displayText.innerText = displayValue;
@@ -175,7 +193,7 @@ function numberButton (num) {
             displayValue += num;
             return displayText.innerText = displayValue;
         }
-    } else if (displayValue.length < 11 && operator.length > 0) {
+    } else if (displayValue.length < 13 && operator.length > 0) {
         displayValue += num;
         return displayText.innerText = displayValue;
     } else {
