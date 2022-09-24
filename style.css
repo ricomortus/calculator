@@ -11,18 +11,22 @@
     grid-column: span 4;
     grid-row: span 1;
     border: 1px solid red;
-    height: 100px;
+    height: 80px;
     width: 320px;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;  
+}
+
+.current-expression {
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .display-text {
     font-size: 45px;
     margin: 0;
-
-    
 }
 
 .buttons {

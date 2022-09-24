@@ -76,24 +76,29 @@ function divide (num1, num2) {
         return displayValue = num1 / num2;
     }
 };
+
+
+
 //FUNCTION BUTTONS
-//Equal button
-equalButton = document.querySelector('.equal-button');
-equalButton.addEventListener('click', () => {
+//Determine result font size based on number of digits
+function displayFinalResult () {
     if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
         displayResultSmall();
+    } else if (displayValue.length === 0) {
+        displayText.innerText = '0'
     } else {
         displayResult();
     }
+};
+//Equal button
+equalButton = document.querySelector('.equal-button');
+equalButton.addEventListener('click', () => {
+    displayFinalResult();
 });
 //Add Button
 addButton = document.querySelector('.add-button');
 addButton.addEventListener('click', () => {
-    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
-        displayResultSmall();
-    } else {
-        displayResult();
-    }
+    displayFinalResult();
     num1 = Number(displayValue);
     operator = 'add';
     displayValue = ''; 
@@ -101,11 +106,7 @@ addButton.addEventListener('click', () => {
 //Subtract Button
 subtractButton = document.querySelector('.subtract-button');
 subtractButton.addEventListener('click', () => {
-    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
-        displayResultSmall();
-    } else {
-        displayResult();
-    }
+    displayFinalResult();
     num1 = Number(displayValue);
     operator = 'subtract';
     displayValue = ''; 
@@ -113,11 +114,7 @@ subtractButton.addEventListener('click', () => {
 //Multiply Button
 multiplyButton = document.querySelector('.multiply-button');
 multiplyButton.addEventListener('click', () => {
-    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
-        displayResultSmall();
-    } else {
-        displayResult();
-    }
+    displayFinalResult();
     num1 = Number(displayValue);
     operator = 'multiply';
     displayValue = ''; 
@@ -125,11 +122,7 @@ multiplyButton.addEventListener('click', () => {
 //Divide Button
 divideButton = document.querySelector('.divide-button');
 divideButton.addEventListener('click', () => {
-    if (displayValue.length > 0 && String(operate(operator, num1, num2)).length > 13) {
-        displayResultSmall();
-    } else {
-        displayResult();
-    }
+    displayFinalResult();
     num1 = Number(displayValue);
     operator = 'divide';
     displayValue = ''; 
